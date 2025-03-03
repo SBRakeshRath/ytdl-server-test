@@ -1,5 +1,6 @@
 import ytdl from "@distube/ytdl-core";
 import cookieAgent from "../../functions/createCookieAgent.js";
+import proxyAgent from "../../functions/proxiSetup.js";
 export default async function videoInfo(link: string) {
   //check if the link is a valid youtube link
 
@@ -7,7 +8,9 @@ export default async function videoInfo(link: string) {
     if (!ytdl.validateURL(link)) {
       return { error: "Invalid URL" };
     }
-    const info = await ytdl.getInfo(link,{agent:cookieAgent});
+    const info = await ytdl.getInfo(link, 
+      { agent: proxyAgent }
+    );
     const videoDetails = info.videoDetails;
 
     const audioFormats = ytdl.filterFormats(info.formats, "audioonly");

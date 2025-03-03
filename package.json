@@ -5,6 +5,7 @@
   "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
+    "proxy": "nodemon ./proxiSetup.ts",
     "dev": "nodemon ./src/core/start.ts",
     "start": "node ./dist/core/start.js",
     "build": "npx tsc",
