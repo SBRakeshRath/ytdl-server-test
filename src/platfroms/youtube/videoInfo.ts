@@ -24,6 +24,7 @@ export default async function videoInfo(link: string) {
       videoWithoutAudio,
     };
   } catch (error) {
+    console.log(error);
     return { error: error.message };
   }
 }

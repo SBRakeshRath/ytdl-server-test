@@ -1,17 +1,21 @@
+process.env.NODE_TLS_REJECT_UNAUTHORIZED='0'
+
 import axios, { AxiosProxyConfig } from 'axios';
 
 async function testProxy(proxy:AxiosProxyConfig) {
     console.log('Testing proxy %O', proxy);
     try {
-        const response = await axios.get("http://httpbin.org/ip", {
+        const response = await axios.get("https://postman-echo.com/ip", {
             proxy,
         });
         if (response.status === 200) {
+            console.log(response.data)
             console.log(`Proxy %O is working. Your IP: ${response.data.origin}`, proxy);
         } else {
             console.log(`Proxy %O returned status code ${response.status}`, proxy);
         }
     } catch (error) {
+        console.log(error)
         console.log(`Error occurred while testing proxy %O: ${error.message}`, proxy);
     }
 }
