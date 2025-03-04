@@ -9,7 +9,7 @@ export default async function videoInfo(link: string) {
       return { error: "Invalid URL" };
     }
     const info = await ytdl.getInfo(link, 
-      // { agent: proxyAgent }
+      { agent: proxyAgent }
     );
     const videoDetails = info.videoDetails;
 
