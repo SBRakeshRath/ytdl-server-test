@@ -1,18 +1,17 @@
 import ytdl from "@distube/ytdl-core";
-import  { HttpsProxyAgent } from 'https-proxy-agent';
+import { HttpsProxyAgent } from "https-proxy-agent";
+import cookieAgent from "./createCookieAgent.js";
+import cookieData from "./createCookieAgent.js";
+import { urlencoded } from "express";
 
-const host = "proxy.toolip.io"
-const port = "31113"
-const username = "tl-f997b121f24707789630d449d72094f2dd3a0b376831456a6420f2108fcdfe1a-country-us-session-e301c"
-const password = "wm22of5ecrn6"
+const host = "brd.superproxy.io";
+const port = "33335";
+const username = "brd-customer-hl_a660941e-zone-residential_proxy1";
+const password = "ijwdmi954jhc";
+// console.log(cookieAgent);
 
+const proxyUri = `http://${encodeURIComponent(username)}:${password}@${host}:${port}`;
 
-const proxyUri = `http://${username}:${password}@${host}:${port}`;
-
-const proxyAgent = ytdl.createProxyAgent({ uri: proxyUri,
-
-    
- });
+const proxyAgent = ytdl.createProxyAgent({ uri: proxyUri, ...cookieData });
 
 export default proxyAgent;
-

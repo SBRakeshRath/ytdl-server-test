@@ -1,5 +1,5 @@
 import ytdl from "@distube/ytdl-core";
-import cookieAgent from "../../functions/createCookieAgent.js";
+// import cookieAgent from "../../functions/createCookieAgent.js";
 import proxyAgent from "../../functions/proxiSetup.js";
 export default async function videoInfo(link: string) {
   //check if the link is a valid youtube link
@@ -9,7 +9,7 @@ export default async function videoInfo(link: string) {
       return { error: "Invalid URL" };
     }
     const info = await ytdl.getInfo(link, 
-      { agent: proxyAgent }
+      // { agent: proxyAgent }
     );
     const videoDetails = info.videoDetails;
 
@@ -24,6 +24,7 @@ export default async function videoInfo(link: string) {
       videoWithoutAudio,
     };
   } catch (error) {
+    console.log("Error in videoInfo.ts");
     console.log(error);
     return { error: error.message };
   }
